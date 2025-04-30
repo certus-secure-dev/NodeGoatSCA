@@ -20,7 +20,8 @@
     "node-esapi": "0.0.1",
     "serve-favicon": "^2.3.0",
     "swig": "^1.4.2",
-    "meow": "3.7.0"
+    "meow": "3.7.0",
+    "lodah": "^4.17.21"
   },
   "comments": {
     "//": "a9 insecure components"

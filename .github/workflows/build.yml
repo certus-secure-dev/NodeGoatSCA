@@ -17,3 +17,6 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  trufflehog:
+      name: TruffleHog OSS
+      uses: trufflesecurity/trufflehog@v3.88.26
