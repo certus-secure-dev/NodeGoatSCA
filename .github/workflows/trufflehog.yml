@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/trufflehog.yml
 jobs:
   secrets:
     runs-on: ubuntu-latest
