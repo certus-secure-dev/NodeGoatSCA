@@ -1,0 +1,37 @@
+id: owasp-nodegoat-login
+
+info:
+  name: OWASP Node Goat Login Test
+  author: User
+  severity: info
+  description: Template to test login functionality of OWASP Node Goat application and store the connect.sid cookie
+  tags: login,session
+
+requests:
+  - method: POST
+    path:
+      - "{{BaseURL}}/login"
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+    body: "userName={{username}}&password={{password}}"
+    extractors:
+      - type: regex
+        name: connect_sid
+        part: header
+        regex:
+          - "connect.sid=([^;]+)"
+        internal: false
+        
+    matchers:
+      - type: status
+        status:
+          - 302  # Successful login usually redirects
+          
+      - type: word
+        part: header
+        words:
+          - "Set-Cookie: connect.sid"
+        condition: and
+
+    # Store the cookie for subsequent requests
+    cookie-reuse: true
